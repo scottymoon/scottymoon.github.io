@@ -78,9 +78,8 @@
     <h3 class="mb-0">Code</h3>
 
     <pre><code class="prettyprint lang-cpp">
-
 // Chapter11Program4.cpp
-// Timothy Kelly & Bryan Carranza - CSIS 223
+// Timothy Kelly &amp; Bryan Carranza - CSIS 223
 // This program simulates a cylinder container painting and shipping service. 
 // The program prompts the user to input the dimensions of a cylinder and the shipping 
 // price per liter of volume. The program then outputs the total shipping price for the 
@@ -88,8 +87,8 @@
 // the program outputs the painting price and the final total of service. If painting 
 // is not requested, the program outputs the final total without painting.
 
-#include <iostream>
-#include <iomanip>
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
 
 using namespace std;
 
@@ -112,7 +111,7 @@ class cylinderType // declares cylinderType class
 
 void cylinderType::radiusVal(double rad) // this function receives and stores the dimension of the cylinder base radius
 {
-    if (rad >= 0)
+    if (rad &gt;= 0)
         radius = rad;
     else
         radius = 0;
@@ -125,7 +124,7 @@ double cylinderType::getRadius() // returns radius value
 
 void cylinderType::heightVal(double ht) // this function receives and stores the dimension of the cylinder height
 {
-    if (ht >= 0)
+    if (ht &gt;= 0)
         height = ht;
     else
         height = 0;
@@ -171,56 +170,55 @@ int main() // program main function
 
     cylinderType operation;
 
-    cout << "--Welcome to the A & T Container Service Calculator--" << endl << endl; // welcome message
-    cout << "Please enter the dimensions of the container (radius and height). " << endl; // explanation for input
-    cout << "Radius (in feet): "; // prompts the user to enter radius value
-    cin >> radius;
-    cout << endl;
-    cout << "Height (in feet): "; // prompts the user to enter height value
-    cin >> height;
-    cout << endl;
+    cout &lt;&lt; "--Welcome to the A &amp; T Container Service Calculator--" &lt;&lt; endl &lt;&lt; endl; // welcome message
+    cout &lt;&lt; "Please enter the dimensions of the container (radius and height). " &lt;&lt; endl; // explanation for input
+    cout &lt;&lt; "Radius (in feet): "; // prompts the user to enter radius value
+    cin &gt;&gt; radius;
+    cout &lt;&lt; endl;
+    cout &lt;&lt; "Height (in feet): "; // prompts the user to enter height value
+    cin &gt;&gt; height;
+    cout &lt;&lt; endl;
 
     operation.radiusVal(radius);
     operation.heightVal(height);
 
-    cout << "Please enter the shipping price (per liter): "; // prompts user to enter shipping price
-    cin >> shipPrice;
-    cout << endl;
+    cout &lt;&lt; "Please enter the shipping price (per liter): "; // prompts user to enter shipping price
+    cin &gt;&gt; shipPrice;
+    cout &lt;&lt; endl;
     shipTotal = shipPrice * operation.volume() * 28.32; // calculates shipping price according to volume
-    cout << setprecision(2) << fixed << "Based on the information you provided, the total shipping cost is $" << shipTotal << endl << endl; // outputs shipping price
+    cout &lt;&lt; setprecision(2) &lt;&lt; fixed &lt;&lt; "Based on the information you provided, the total shipping cost is $" &lt;&lt; shipTotal &lt;&lt; endl &lt;&lt; endl; // outputs shipping price
 
-    while (paintRequest != 'Y' && paintRequest != 'N') // while loop for for painting answer
+    while (paintRequest != 'Y' &amp;&amp; paintRequest != 'N') // while loop for for painting answer
     {
-        cout << "Would you like your cylinder to be painted? Y/N" << endl; // prompts user to enter 'yes' or 'no' for painting
-        cin >> paintRequest;
-        cout << endl;
+        cout &lt;&lt; "Would you like your cylinder to be painted? Y/N" &lt;&lt; endl; // prompts user to enter 'yes' or 'no' for painting
+        cin &gt;&gt; paintRequest;
+        cout &lt;&lt; endl;
 
         if (paintRequest == 'Y' || paintRequest == 'y') // result for 'yes' answer
         {
-            cout << "Please enter the paint cost (per square foot): "; // prompts user to input paint cost
-            cin >> paintPrice;
-            cout << endl;
+            cout &lt;&lt; "Please enter the paint cost (per square foot): "; // prompts user to input paint cost
+            cin &gt;&gt; paintPrice;
+            cout &lt;&lt; endl;
 
             paintTotal = paintPrice * operation.surfaceArea(); // calculates paint price according to surface area
             finalTotal = (shipTotal) + (paintTotal); // calculates final total (shipping + paint)
 
-            cout << setprecision(2) << fixed << "The paint price is $" << paintTotal << endl; // outputs total paint price
-            cout << setprecision(2) << fixed << "Your final total for paint and shipping is $" << finalTotal << endl << endl; // outputs final total
-            cout << "--Thank you for choosing A & T Container Service--" << endl; // thank-you message
+            cout &lt;&lt; setprecision(2) &lt;&lt; fixed &lt;&lt; "The paint price is $" &lt;&lt; paintTotal &lt;&lt; endl; // outputs total paint price
+            cout &lt;&lt; setprecision(2) &lt;&lt; fixed &lt;&lt; "Your final total for paint and shipping is $" &lt;&lt; finalTotal &lt;&lt; endl &lt;&lt; endl; // outputs final total
+            cout &lt;&lt; "--Thank you for choosing A &amp; T Container Service--" &lt;&lt; endl; // thank-you message
         }
         else if (paintRequest == 'N' || paintRequest == 'n') // result of 'no' answer
         {
             finalTotal = shipTotal; // initializes final total to reflect only shipping price (no painting)
-            cout << setprecision(2) << fixed << "Your final total is $" << finalTotal << endl << endl; // outputs final total
-            cout << "--Thank you for choosing A & T Container Service--" << endl; // thank-you message
+            cout &lt;&lt; setprecision(2) &lt;&lt; fixed &lt;&lt; "Your final total is $" &lt;&lt; finalTotal &lt;&lt; endl &lt;&lt; endl; // outputs final total
+            cout &lt;&lt; "--Thank you for choosing A &amp; T Container Service--" &lt;&lt; endl; // thank-you message
         }
 
         break;
     }
 
     return 0;
-}
-
+}        
     </code></pre>
   </section>
 

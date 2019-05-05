@@ -69,8 +69,7 @@
     <h3 class="mb-0">Code</h3>
 
     <pre><code class="prettyprint lang-java">
-
-// BowlingScore.java
+// BowlingScore.java 
 //
 // Timothy Kelly
 // CSIS 222
@@ -89,7 +88,7 @@ public class BowlingScore { // names public class
   static final int TOTAL_FRAMES = 10; // initializes TOTAL_FRAMES as "10"
 
   // declared arrays
-  static ArrayList<ArrayList<String>> frameResults = new ArrayList<ArrayList<String>>(); // declares new ArrayList "frameResuts" which displays user input for each roll in each frame
+  static ArrayList&lt;ArrayList&lt;String&gt;&gt; frameResults = new ArrayList&lt;ArrayList&lt;String&gt;&gt;(); // declares new ArrayList "frameResuts" which displays user input for each roll in each frame
   static int[] frameScores = new int[TOTAL_FRAMES]; // declares new "frameScores" array to display the score values of each frame
 
   public static void main(String[] args) { // opens main program function
@@ -98,7 +97,7 @@ public class BowlingScore { // names public class
     System.out.println("\nWelcome to Kingpin Bowling!");
     System.out.println("\nPlease enter your result for each roll as you play...\n");
     
-    for (int x = 0; x < TOTAL_FRAMES; x++) { // for loop to count number of frames
+    for (int x = 0; x &lt; TOTAL_FRAMES; x++) { // for loop to count number of frames
       Frame frame = new Frame(x + 1);
       frame.roll();
 
@@ -118,14 +117,14 @@ public class BowlingScore { // names public class
   // opens function to calculate frame scores
   private static void calculateFrameScores() {
     
-    ArrayList<String> rolls = new ArrayList<String>(); // stores each roll in ArrayList
-    ArrayList<int[]> strikeIndeces = new ArrayList<int[]>(); // stores each strike in ArrayList
-    ArrayList<int[]> spareIndeces = new ArrayList<int[]>(); // stores each spare in ArrayList
-    ArrayList<Integer> openFrameIndeces = new ArrayList<Integer>(); // stores each open frame in ArrayList
+    ArrayList&lt;String&gt; rolls = new ArrayList&lt;String&gt;(); // stores each roll in ArrayList
+    ArrayList&lt;int[]&gt; strikeIndeces = new ArrayList&lt;int[]&gt;(); // stores each strike in ArrayList
+    ArrayList&lt;int[]&gt; spareIndeces = new ArrayList&lt;int[]&gt;(); // stores each spare in ArrayList
+    ArrayList&lt;Integer&gt; openFrameIndeces = new ArrayList&lt;Integer&gt;(); // stores each open frame in ArrayList
 
     // loop to find and index each strike and spare rolled
     int rollIndex = 0;
-    for (int frameIndex = 0; frameIndex < frameResults.size(); frameIndex++) {
+    for (int frameIndex = 0; frameIndex &lt; frameResults.size(); frameIndex++) {
       boolean isOpen = true;
       
       // loop to find which frames included strikes or spares
@@ -156,12 +155,12 @@ public class BowlingScore { // names public class
     calculateSpares(rolls, spareIndeces); // calls function to calculate spare scores
     calculateOpenFrames(openFrameIndeces); // calls function to calculate open frame scores
     
-    ArrayList<String> lastFrameRolls = frameResults.get(frameResults.size() - 1); // initializes rolls specifically for final frame
+    ArrayList&lt;String&gt; lastFrameRolls = frameResults.get(frameResults.size() - 1); // initializes rolls specifically for final frame
     calculateLastFrame(lastFrameRolls); // calls function to calculate the final frame scores
   }
 
   // function to calculate strike scores
-  private static void calculateStrikes(ArrayList<String> rolls, ArrayList<int[]> strikeIndeces) {
+  private static void calculateStrikes(ArrayList&lt;String&gt; rolls, ArrayList&lt;int[]&gt; strikeIndeces) {
     for (int[] strikeIndex : strikeIndeces) {
       int currentFrame = strikeIndex[0];
       int startRoll = strikeIndex[1];
@@ -169,8 +168,8 @@ public class BowlingScore { // names public class
       
       int frameTotalScore = 0;
 
-      if (currentFrame < TOTAL_FRAMES - 1) {
-        for (int currrentIndex = startRoll; currrentIndex <= endRoll; currrentIndex++) {
+      if (currentFrame &lt; TOTAL_FRAMES - 1) {
+        for (int currrentIndex = startRoll; currrentIndex &lt;= endRoll; currrentIndex++) {
           frameTotalScore += getRollValue(rolls, currrentIndex);
         }
         
@@ -180,7 +179,7 @@ public class BowlingScore { // names public class
   }
 
   // function to calculate spare scores
-  private static void calculateSpares(ArrayList<String> rolls, ArrayList<int[]> spareIndeces) {
+  private static void calculateSpares(ArrayList&lt;String&gt; rolls, ArrayList&lt;int[]&gt; spareIndeces) {
     for (int[] spareIndex : spareIndeces) {
       int currentFrame = spareIndex[0];
       int startRoll = spareIndex[1] - 1;
@@ -188,8 +187,8 @@ public class BowlingScore { // names public class
       
       int frameTotalScore = 0;
       
-      if (currentFrame < TOTAL_FRAMES - 1) {
-        for (int currentIndex = startRoll; currentIndex <= endRoll; currentIndex++) {
+      if (currentFrame &lt; TOTAL_FRAMES - 1) {
+        for (int currentIndex = startRoll; currentIndex &lt;= endRoll; currentIndex++) {
           frameTotalScore += getRollValue(rolls, currentIndex);
         }
         
@@ -199,7 +198,7 @@ public class BowlingScore { // names public class
   }
   
   // function to calculate open frame scores (any frame that does not include strikes or spares
-  private static void calculateOpenFrames(ArrayList<Integer> openFrameIndeces) {
+  private static void calculateOpenFrames(ArrayList&lt;Integer&gt; openFrameIndeces) {
     for (int openFrameIndex : openFrameIndeces) {
       int frameTotal = 0;
       for (String roll : frameResults.get(openFrameIndex)) {
@@ -211,9 +210,9 @@ public class BowlingScore { // names public class
   }
 
   // function to calculate the rolls in the final frame
-  private static void calculateLastFrame(ArrayList<String> rolls) {
+  private static void calculateLastFrame(ArrayList&lt;String&gt; rolls) {
     int lastFrameTotal = 0;
-    for(int x = 0; x < rolls.size(); x++) {
+    for(int x = 0; x &lt; rolls.size(); x++) {
       lastFrameTotal += getRollValue(rolls, x);
     }
     
@@ -221,7 +220,7 @@ public class BowlingScore { // names public class
   }
   
   // function to get value for each toll (strike, spare, or numeric value)
-  private static int getRollValue(ArrayList<String> rolls, int currentIndex) {
+  private static int getRollValue(ArrayList&lt;String&gt; rolls, int currentIndex) {
     String value = rolls.get(currentIndex);
     switch (value) {
     case STRIKE:
@@ -239,14 +238,14 @@ public class BowlingScore { // names public class
     
     // outputs frame number list
     System.out.print("\nFrame:\t\t");
-    for (int x = 0; x < TOTAL_FRAMES; x++) {
+    for (int x = 0; x &lt; TOTAL_FRAMES; x++) {
       System.out.printf("\t%d", x + 1);
     }
     
     // outputs the user's input for each roll in each frame
     System.out.print("\n\nResult:\t\t");
-    for (int x = 0; x < frameResults.size(); x++) {
-      ArrayList<String> result = frameResults.get(x);
+    for (int x = 0; x &lt; frameResults.size(); x++) {
+      ArrayList&lt;String&gt; result = frameResults.get(x);
       System.out.print("\t");
       for (String roll : result) {
         System.out.printf("%s ", roll);
@@ -256,14 +255,14 @@ public class BowlingScore { // names public class
     
     // outputs the scores for each frame
     System.out.print("\n\nFrame Score:\t");
-    for (int x = 0; x < frameScores.length; x++) {
+    for (int x = 0; x &lt; frameScores.length; x++) {
       System.out.printf("\t%d", frameScores[x]);	
     }
     
     // outputs the running total frame by frame including the final game score
     System.out.print("\n\nRunning Total:\t");
     int runningTotal = 0;
-    for (int x = 0; x < frameScores.length; x++) {
+    for (int x = 0; x &lt; frameScores.length; x++) {
       runningTotal += frameScores[x];
       System.out.printf("\t%d", runningTotal);	
     }
@@ -283,100 +282,98 @@ import java.util.Scanner; // imports Scanner utility
 import java.util.ArrayList; // imports ArrayList utility
 
 public class Frame { // names public Frame class
-	
-	// CONSTANT VARIABLES
-	static final String STRIKE = "X"; // initializes STRIKE string as "X"
-	static final String SPARE = "/"; // initializes SPARE string as "/"
-	static final int LAST_FRAME = 10; // initializes LAST_FRAME as the 10th frame
-	
-	// declared variables
-	int rollsAvailable = 2; // initializes number of rolls available in each frame
-	ArrayList<String> results = new ArrayList<String>(); // initializes new ArrayList item "results"
-	int frameNumber; // initializes variable to track each frame
+  
+  // CONSTANT VARIABLES
+  static final String STRIKE = "X"; // initializes STRIKE string as "X"
+  static final String SPARE = "/"; // initializes SPARE string as "/"
+  static final int LAST_FRAME = 10; // initializes LAST_FRAME as the 10th frame
+  
+  // declared variables
+  int rollsAvailable = 2; // initializes number of rolls available in each frame
+  ArrayList&lt;String&gt; results = new ArrayList&lt;String&gt;(); // initializes new ArrayList item "results"
+  int frameNumber; // initializes variable to track each frame
 
-	Scanner input = new Scanner(System.in); // declaration of new Scanner "input"
+  Scanner input = new Scanner(System.in); // declaration of new Scanner "input"
 
-	Frame(int frameNumber) { // constructor Frame
-		this.frameNumber = frameNumber; // identifies this instance of frameNumber
-		// if statement re-defines number of rolls available to be 3 for the 10th frame
-		if (frameNumber == LAST_FRAME) {
-			rollsAvailable = 3;
-		}
-	}
+  Frame(int frameNumber) { // constructor Frame
+    this.frameNumber = frameNumber; // identifies this instance of frameNumber
+    // if statement re-defines number of rolls available to be 3 for the 10th frame
+    if (frameNumber == LAST_FRAME) {
+      rollsAvailable = 3;
+    }
+  }
 
-	// function to determine results of each roll
-	public void roll() {
-		boolean error = false;
-		
-		// for loop to receive input from user for rolls
-		for (int x = 0; x < rollsAvailable; x++) {
-			error = false;
-			String prompt = String.format("What did you score on Roll %d of Frame %d? ", x + 1, frameNumber);
-			System.out.printf(prompt);
-			
-			String value = input.next(); // receives the user's next input as variable "value"
-			
-			// switch to indicate acceptable input
-			// if input is not "X", "/", or 0-9, an error message will prompt the user to re-enter valid input
-			switch(value) {
-			case STRIKE:
-				results.add(value);
-				break;
-			case SPARE:
-				results.add(value);
-				break;
-			case "0":
-				results.add(value);
-				break;
-			case "1":
-				results.add(value);
-				break;
-			case "2":
-				results.add(value);
-				break;
-			case "3":
-				results.add(value);
-				break;
-			case "4":
-				results.add(value);
-				break;
-			case "5":
-				results.add(value);
-				break;
-			case "6":
-				results.add(value);
-				break;
-			case "7":
-				results.add(value);
-				break;
-			case "8":
-				results.add(value);
-				break;
-			case "9":
-				results.add(value);
-				break;
-			default:
-				System.out.println("Please enter a number 0-9, X, or /"); // error message to prompt valid input
-				error = true;
-				break;
-			}
-			
-			// if statement to break out of loop and skip to next frame if a STRIKE or SPARE is rolled (not in LAST_FRAME)
-			if(value.equals(STRIKE) || value.equals(SPARE)) {
-				if(frameNumber < LAST_FRAME) {
-					break;
-				}		
-			}
-			
-			if (error) x--; // if invalid input is entered, program does not progress to the next frame
+  // function to determine results of each roll
+  public void roll() {
+    boolean error = false;
+    
+    // for loop to receive input from user for rolls
+    for (int x = 0; x &lt; rollsAvailable; x++) {
+      error = false;
+      String prompt = String.format("What did you score on Roll %d of Frame %d? ", x + 1, frameNumber);
+      System.out.printf(prompt);
+      
+      String value = input.next(); // receives the user's next input as variable "value"
+      
+      // switch to indicate acceptable input
+      // if input is not "X", "/", or 0-9, an error message will prompt the user to re-enter valid input
+      switch(value) {
+      case STRIKE:
+        results.add(value);
+        break;
+      case SPARE:
+        results.add(value);
+        break;
+      case "0":
+        results.add(value);
+        break;
+      case "1":
+        results.add(value);
+        break;
+      case "2":
+        results.add(value);
+        break;
+      case "3":
+        results.add(value);
+        break;
+      case "4":
+        results.add(value);
+        break;
+      case "5":
+        results.add(value);
+        break;
+      case "6":
+        results.add(value);
+        break;
+      case "7":
+        results.add(value);
+        break;
+      case "8":
+        results.add(value);
+        break;
+      case "9":
+        results.add(value);
+        break;
+      default:
+        System.out.println("Please enter a number 0-9, X, or /"); // error message to prompt valid input
+        error = true;
+        break;
+      }
+      
+      // if statement to break out of loop and skip to next frame if a STRIKE or SPARE is rolled (not in LAST_FRAME)
+      if(value.equals(STRIKE) || value.equals(SPARE)) {
+        if(frameNumber &lt; LAST_FRAME) {
+          break;
+        }		
+      }
+      
+      if (error) x--; // if invalid input is entered, program does not progress to the next frame
 
-		}
+    }
 
-	}
+  }
 
 }
-        
-
     </code></pre>
   </section>
 
